@@ -1,0 +1,31 @@
+{
+  "name": "News-Scraper-App",
+  "version": "1.0.0",
+  "description": "A web app that scrapes articles from a news site and lets you save the article and your comments to a Mongo database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L82350v8/News-Scraper-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/L82350v8/News-Scraper-App/issues"
+  },
+  "homepage": "https://github.com/L82350v8/News-Scraper-App#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.1.2",
+    "morgan": "^1.9.0",
+    "request": "^2.87.0"
+  }
+}
