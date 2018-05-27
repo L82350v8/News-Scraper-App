@@ -14,18 +14,13 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover; 
 }
-.display-4, .lead {
+.display-4, .lead, h2, h4, h5 {
   font-family: 'Frank Ruhl Libre', serif;
-  color: #f2f2f2;
   font-weight: bold;
 }
 .lead {
   font-size: 24px;
   margin-bottom: 0;
-}
-#notes {
-  float: right;
-  width: 30%;
 }
 textarea,
   input {
@@ -39,4 +34,16 @@ input {
 textarea {
   height: 200px;
   font-size: 18px;
+}
+/* unvisited article link */
+a:link {
+    color: black;
+}
+/* visited link */
+a:visited {
+    color: #5C8CBC;
+}
+/* mouse over link */
+a:hover {
+    color: blue;
 }
