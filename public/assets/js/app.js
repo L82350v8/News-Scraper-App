@@ -11,20 +11,20 @@ $(document).on("click", "#scrape-btn", function () {
   }).then(function (data) {
     $("#scrape-btn").hide();
     $(".jumbotron").css("height", "225px");
-  });
-});
 
-$.getJSON("/articles", function (data) {
-  // present scraped articles to client 
-  for (var i = 0; i < data.length; i++) {
-    $("#articles").append("<h4 class=\"mt-4 mb-0\" data-id='" + data[i]._id + "'>" + data[i].title +
-      "<button type=\"button\" class=\"btn note-btn btn-info float-right\" data-id='" + data[i]._id +
-      "'>See Comments</button>");
-    if (data[i].summary !== "Article summary was not found.") {
-      $("#articles").append("<p class=\"mb-2\">" + data[i].summary);
-    }
-    $("#articles").append("<a href=" + data[i].link + " target=\"blank\">" + data[i].link + "</a>");
-  }
+    $.getJSON("/articles", function (data) {
+      // present scraped articles to client 
+      for (var i = 0; i < data.length; i++) {
+        $("#articles").append("<h4 class=\"mt-4 mb-0\" data-id='" + data[i]._id + "'>" + data[i].title +
+          "<button type=\"button\" class=\"btn note-btn btn-info float-right\" data-id='" + data[i]._id +
+          "'>See Comments</button>");
+        if (data[i].summary !== "Article summary was not found.") {
+          $("#articles").append("<p class=\"mb-2\">" + data[i].summary);
+        }
+        $("#articles").append("<a href=" + data[i].link + " target=\"blank\">" + data[i].link + "</a>");
+      }
+    });
+  });
 });
 
 $(document).on("click", ".note-btn", function () {

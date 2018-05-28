@@ -21,11 +21,13 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 //===================================================================================================
-mongoose.connect("mongodb://localhost/newsScraper");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // Routes
 //===================================================================================================
-// A GET route for scraping the bloomberg website
+// A GET route for scraping the bloomberg website//
 app.get("/scrape", function (req, res) {
   axios.get("http://www.bloomberg.com/").then(function (response) {
     var $ = cheerio.load(response.data);
@@ -117,7 +119,7 @@ app.put("/note/:id", function (req, res) {
 app.post("/note/:id", function (req, res) {
   db.Note.deleteOne({ _id: req.params.id })
     .then(function (dbNoteData) {
-      return db.Article.findOneAndUpdate({ _id: req.body.articleId.id }, { note: null }, { new: true });
+      return db.Article.findOneAndUpdate({ _id: req.body.articleId }, { note: null }, { new: true });
     })
     .then(function (dbArticle) {
       res.json(dbArticle);
