@@ -4,24 +4,21 @@ var savedArticleData = {};
 var savedNoteData = {};
 
 $(document).on("click", "#scrape-btn", function () {
-
+  $("#notes").empty();
   $.ajax({
     method: "GET",
     url: "/scrape"
   }).then(function (data) {
-    $("#scrape-btn").hide();
-    $(".jumbotron").css("height", "225px");
 
-    $.getJSON("/articles", function (data) {
-      // present scraped articles to client 
-      for (var i = 0; i < data.length; i++) {
-        $("#articles").append("<h4 class=\"mt-4 mb-0\" data-id='" + data[i]._id + "'>" + data[i].title +
-          "<button type=\"button\" class=\"btn note-btn btn-info float-right\" data-id='" + data[i]._id +
+    $.getJSON("/articles", function (jsonData) {
+      for (var i = 0; i < jsonData.length; i++) {
+        $("#articles").append("<h4 class=\"mt-4 mb-0\" data-id='" + jsonData[i]._id + "'>" + jsonData[i].title +
+          "<button type=\"button\" class=\"btn note-btn btn-info float-right\" data-id='" + jsonData[i]._id +
           "'>See Comments</button>");
-        if (data[i].summary !== "Article summary was not found.") {
-          $("#articles").append("<p class=\"mb-2\">" + data[i].summary);
+        if (jsonData[i].summary !== "Article summary was not found.") {
+          $("#articles").append("<p class=\"mb-2\">" + jsonData[i].summary);
         }
-        $("#articles").append("<a href=" + data[i].link + " target=\"blank\">" + data[i].link + "</a>");
+        $("#articles").append("<a href=" + jsonData[i].link + " target=\"blank\">" + jsonData[i].link + "</a>");
       }
     });
   });
