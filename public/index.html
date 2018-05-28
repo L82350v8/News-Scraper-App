@@ -18,45 +18,32 @@
 
 <body>
   <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-md py-3">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link px-3 py-0 my-2 text-white" href="/">
-              <h6>Home</h6>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center border-bottom border-dark">
       <h1 class="display-4 text-white">Mongo News Scraper</h1>
       <p class="lead text-white">Bloomberg News Edition</p>
+      <button type="button" class="btn-lg btn-light mt-4" id="scrape-btn">Populate Articles</button>
     </div>
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-8">
           <h2 class="text-center">Today's Articles</h1>
             <div id="articles"></div>
         </div>
-        <!-- Modal -->
+        <!-- Comment Modal -->
         <div class="modal fade" id="note-modal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="noteModalLabel">Enter Your Notes about the following article:</h5>
+                <h5 class="modal-title" id="noteModalLabel">Enter Your Comments about the following article:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <h4><span id="modal-article-title"></span></h4>  
-                <textarea type="text" name="body" placeholder="Add Notes Here" id="note-textarea-input"></textarea>
+                <h4>
+                  <span id="modal-article-title"></span>
+                </h4>
+                <textarea type="text" name="body" placeholder="Add Comments Here" id="note-textarea-input"></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -65,8 +52,31 @@
             </div>
           </div>
         </div>
+        <!-- Edit Comment Modal -->
+        <div class="modal fade" id="edit-note-modal" tabindex="-1" role="dialog" aria-labelledby="editNoteModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editNoteModalLabel">Edit Your Comments about the following article:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h4>
+                  <span id="edit-modal-article-title"></span>
+                </h4>
+                <textarea type="text" name="body" id="edit-note-textarea-input"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="edit-note-save-btn">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-sm-4 ml-0">
-          <h2 class="text-center">Article Notes</h1>
+          <h2 class="text-center">Article Comments</h1>
             <div id="notes"></div>
         </div>
       </div>

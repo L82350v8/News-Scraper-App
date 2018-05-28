@@ -14,7 +14,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover; 
 }
-.display-4, .lead, h2, h4, h5 {
+.display-4, .lead, h2, h4, h5, #scrape-btn {
   font-family: 'Frank Ruhl Libre', serif;
   font-weight: bold;
 }
